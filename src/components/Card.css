@@ -1,0 +1,128 @@
+.card-scene {
+  width: 600px;
+  height: 300px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 2rem auto;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card--flipped {
+  transform: rotateY(180deg);
+}
+
+.card__face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+}
+
+.card__face--front {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  border: 2px solid #4fc3f7;
+}
+
+.card__face--back {
+  background: linear-gradient(135deg, #1a0a00 0%, #3d1f00 50%, #6b3500 100%);
+  border: 2px solid #ffd700;
+  transform: rotateY(180deg);
+}
+
+.card__label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 0.75rem;
+  opacity: 0.7;
+}
+
+.card__face--front .card__label {
+  color: #4fc3f7;
+}
+
+.card__face--back .card__label {
+  color: #ffd700;
+}
+
+.card__face p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #e0e0e0;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---- Emoji / image visuals ---- */
+.card__emoji {
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.card__emoji--small {
+  font-size: 2.25rem;
+}
+
+.card__image {
+  max-width: 220px;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+/* ---- Category badge ---- */
+.card__category {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  color: #0a0a0f;
+}
+
+/* ---- Category-based colors ----
+   The difficulty class lives on .card, so we recolor the front-face
+   border + badge to match. (The back stays gold for contrast.) */
+.card--easy .card__face--front {
+  border-color: #4ade80;
+}
+.card--easy .card__category {
+  background: #4ade80;
+}
+
+.card--medium .card__face--front {
+  border-color: #fbbf24;
+}
+.card--medium .card__category {
+  background: #fbbf24;
+}
+
+.card--hard .card__face--front {
+  border-color: #f87171;
+}
+.card--hard .card__category {
+  background: #f87171;
+}
