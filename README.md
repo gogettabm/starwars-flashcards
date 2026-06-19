@@ -1,8 +1,8 @@
-# Web Development Project 3 - *Star Wars Flashcards*
+# Web Development Project - *Star Wars Flashcards! Part 2*
 
 Submitted by: **Brayan Moafo**
 
-This web app: **An interactive Star Wars trivia flashcard app. Each card shows a question about the Star Wars universe on the front and reveals the answer when clicked. Users can type a guess into an input box and submit it to get correct/incorrect feedback (with fuzzy matching for typos), and step forward and backward through the ordered set of cards. Cards are color-coded by difficulty (Easy / Medium / Hard) and feature thematic icons.**
+This web app: **An interactive Star Wars trivia flashcard app. Each card shows a question about the Star Wars universe on the front and reveals the answer when clicked. Users can type a guess into an input box and submit it to get correct/incorrect feedback (with fuzzy matching for typos), step forward and backward through the ordered set of cards, shuffle the deck, track their current and longest correct-answer streaks, and mark cards as mastered to remove them from the pool. Cards are color-coded by difficulty (Easy / Medium / Hard) and feature thematic icons.**
 
 Time spent: **3** hours spent in total
 
@@ -21,8 +21,14 @@ The following **required** functionality is completed:
 
 The following **optional** features are implemented:
 
-- [x] A user's answer may be counted as correct even when it is not an exact match
-  - Guesses are normalized (case, punctuation, and parenthetical text ignored), partial matches are accepted, and minor typos are tolerated using Levenshtein edit distance.
+- [x] Users can use a shuffle button to randomize the order of the cards
+  - Cards stay in their fixed sequence unless the **Shuffle** button is clicked; clicking it randomizes the deck order (Fisher–Yates) and returns to the first card.
+- [x] A user's answer may be counted as correct even when it is slightly different from the target answer
+  - Guesses are normalized (case and punctuation discrepancies ignored, parenthetical text removed), partial matches are accepted, and minor typos are tolerated using Levenshtein edit distance.
+- [x] A counter displays the user's current and longest streak of correct responses
+  - The current streak increments on each correct guess and resets to 0 on an incorrect guess; the longest streak updates whenever the current streak exceeds it.
+- [x] A user can mark a card that they have mastered and have it removed from the pool of displayed cards
+  - Clicking **Mark as Mastered** removes the card from the active pool and adds it to a separate list of mastered cards shown below.
 - [x] A counter displays the user's current position within the list (e.g. `3 / 15`)
 - [x] Cards contain images in addition to or in place of text
   - Each card displays a thematic emoji icon, and the `Card` component also supports real `<img>` images via an optional `image` field.

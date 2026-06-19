@@ -126,6 +126,123 @@ body {
   box-shadow: none;
 }
 
+/* ---- Streak counters ---- */
+.app__streaks {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.streak {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 0.6rem 1.4rem;
+  min-width: 120px;
+}
+
+.streak__num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #ffd700;
+  line-height: 1;
+}
+
+.streak__label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #888;
+  margin-top: 0.35rem;
+}
+
+/* ---- Action buttons (shuffle / master) ---- */
+.app__actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.75rem;
+}
+
+.app__action-btn {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(79, 195, 247, 0.12);
+  color: #4fc3f7;
+  border: 1px solid #4fc3f7;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.app__action-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(79, 195, 247, 0.22);
+}
+
+.app__action-btn--master {
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+  border-color: #4ade80;
+}
+
+.app__action-btn--master:hover {
+  background: rgba(74, 222, 128, 0.22);
+}
+
+/* ---- Mastered list ---- */
+.app__mastered {
+  margin-top: 2.5rem;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.app__mastered-title {
+  color: #4ade80;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.app__mastered-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.app__mastered-list li {
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.4);
+  color: #c8f7d4;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+/* ---- All-mastered message ---- */
+.app__done {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.app__done h2 {
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+}
+
+.app__done p {
+  color: #aaa;
+}
+
 .app__footer {
   margin-top: auto;
   padding-top: 3rem;

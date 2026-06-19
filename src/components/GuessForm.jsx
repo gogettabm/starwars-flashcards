@@ -41,7 +41,7 @@ function isCorrect(guess, answer) {
   return editDistance(g, a) <= tolerance;
 }
 
-function GuessForm({ answer }) {
+function GuessForm({ answer, onResult }) {
   const [guess, setGuess] = useState("");
   // status is one of: "idle" | "correct" | "incorrect"
   const [status, setStatus] = useState("idle");
@@ -49,7 +49,9 @@ function GuessForm({ answer }) {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!guess.trim()) return;
-    setStatus(isCorrect(guess, answer) ? "correct" : "incorrect");
+    const correct = isCorrect(guess, answer);
+    setStatus(correct ? "correct" : "incorrect");
+    if (onResult) onResult(correct); // report up so the parent can track streaks
   };
 
   const handleChange = (event) => {
