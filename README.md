@@ -1,30 +1,30 @@
-# Web Development Project 2 - *Star Wars Flashcards*
+# Web Development Project 3 - *Star Wars Flashcards*
 
 Submitted by: **Brayan Moafo**
 
-This web app: **An interactive Star Wars trivia flashcard app. Each card shows a question about the Star Wars universe on the front and reveals the answer when clicked. Cards are color-coded by difficulty (Easy / Medium / Hard) and feature thematic icons. A "Next Card" button shuffles to a random card so you can study in a non-sequential order.**
+This web app: **An interactive Star Wars trivia flashcard app. Each card shows a question about the Star Wars universe on the front and reveals the answer when clicked. Users can type a guess into an input box and submit it to get correct/incorrect feedback (with fuzzy matching for typos), and step forward and backward through the ordered set of cards. Cards are color-coded by difficulty (Easy / Medium / Hard) and feature thematic icons.**
 
-Time spent: **4** hours spent in total
+Time spent: **3** hours spent in total
 
 ## Required Features
 
 The following **required** functionality is completed:
 
-- [x] **The app displays the title of the card set, a short description of the card set, and a list of card pairs**
-  - [x] The card set title is displayed
-  - [x] A short description of the card set is displayed
-  - [x] A list of card pairs is created
-  - [x] The total number of cards in the set is displayed
-- [x] **A single card at a time is displayed, only showing one of the components of the information pair**
-  - [x] A single card is displayed at a time
-  - [x] Only one half of the information pair is displayed at a time
-- [x] **Clicking on the card flips the card over, showing the corresponding component of the information pair**
-- [x] **Clicking on the next button displays a random new card**
-  - [x] Cards are not displayed in sequential order
+- [x] **The user can enter their guess into a text box before seeing the flipside of the card**
+  - [x] A clearly labeled input box is displayed on the card with a submit button
+  - [x] Clicking the submit button with an **incorrect** answer shows visual feedback that it is incorrect
+  - [x] Clicking the submit button with a **correct** answer shows visual feedback that it is correct
+- [x] **The user can navigate through an ordered list of cards**
+  - [x] A forward/next button displayed on the card navigates to the next card in the set sequence when clicked
+  - [x] A previous/back button displayed on the card returns to the previous card in the set sequence when clicked
+  - [x] The next and back buttons are disabled (grayed out) at the end and beginning of the list, with no wrap-around navigation
 
 The following **optional** features are implemented:
 
-- [x] Cards contains images in addition to or in place of text
+- [x] A user's answer may be counted as correct even when it is not an exact match
+  - Guesses are normalized (case, punctuation, and parenthetical text ignored), partial matches are accepted, and minor typos are tolerated using Levenshtein edit distance.
+- [x] A counter displays the user's current position within the list (e.g. `3 / 15`)
+- [x] Cards contain images in addition to or in place of text
   - Each card displays a thematic emoji icon, and the `Card` component also supports real `<img>` images via an optional `image` field.
 - [x] Cards have different visual styles such as color based on their category
   - Cards are color-coded by difficulty: Easy (green), Medium (amber), Hard (red), each with a matching category badge.
@@ -32,7 +32,8 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 * [x] A 3D flip animation when a card is turned over
-* [x] Difficulty badge displayed in the corner of every card
+* [x] Guess input and feedback live in a dedicated nested `GuessForm` component
+* [x] Guess feedback resets automatically when the user retypes or changes cards
 * [x] Themed Star Wars styling (starfield background, gold/blue color scheme)
 
 ## Video Walkthrough
@@ -49,10 +50,12 @@ GIF created with [Kap](https://getkap.co/)
 
 ## Notes
 
-The project uses **React + Vite**. One early gotcha was that Vite uses `npm run dev`
-(not `npm start`) and requires files containing JSX to use the `.jsx` extension.
-Implementing the 3D flip with `backface-visibility` and a `rotateY` transform took
-some iteration to get the front and back faces to align correctly.
+The project uses **React + Vite**. For Part 2, the main challenges were getting the
+fuzzy answer matching right (normalizing text and using Levenshtein edit distance so
+small typos still count as correct) and making sure each card's guess input resets
+its own state when navigating — solved by giving the nested `GuessForm` component a
+React `key` tied to the current card index. The navigation buttons use a `disabled`
+state derived from the current index so there's no wrap-around at the ends of the list.
 
 ## License
 
