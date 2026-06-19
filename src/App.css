@@ -78,9 +78,23 @@ body {
   letter-spacing: 1px;
 }
 
-.app__next-btn {
+.app__nav {
   margin-top: 1.75rem;
-  padding: 0.75rem 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.app__progress {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  color: #888;
+  min-width: 60px;
+  text-align: center;
+}
+
+.app__nav-btn {
+  padding: 0.75rem 2rem;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 2px;
@@ -94,13 +108,22 @@ body {
   box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
 }
 
-.app__next-btn:hover {
+.app__nav-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 6px 28px rgba(255, 215, 0, 0.5);
 }
 
-.app__next-btn:active {
+.app__nav-btn:active:not(:disabled) {
   transform: translateY(0);
+}
+
+/* Disabled state at the start / end of the list — grayed out,
+   no hover lift, and not clickable (no wrap-around). */
+.app__nav-btn:disabled {
+  background: #2a2a33;
+  color: #666;
+  cursor: not-allowed;
+  box-shadow: none;
 }
 
 .app__footer {

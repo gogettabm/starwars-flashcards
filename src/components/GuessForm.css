@@ -1,0 +1,85 @@
+.guess {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 600px;
+}
+
+.guess__label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #aaa;
+}
+
+.guess__row {
+  display: flex;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.guess__input {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #555;
+  background: #14141f;
+  color: #e0e0e0;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.guess__input::placeholder {
+  color: #666;
+}
+
+.guess__input:focus {
+  border-color: #4fc3f7;
+}
+
+/* Visual feedback colors driven by submit status */
+.guess__input--correct {
+  border-color: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.25);
+}
+
+.guess__input--incorrect {
+  border-color: #f87171;
+  box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.25);
+}
+
+.guess__submit {
+  padding: 0.7rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #4fc3f7, #2196c9);
+  color: #0a0a0f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.guess__submit:hover {
+  transform: translateY(-2px);
+}
+
+.guess__feedback {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.guess__feedback--correct {
+  color: #4ade80;
+}
+
+.guess__feedback--incorrect {
+  color: #f87171;
+}

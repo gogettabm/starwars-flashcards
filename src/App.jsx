@@ -1,17 +1,21 @@
 import { useState } from "react";
 import Card from "./components/Card";
+import GuessForm from "./components/GuessForm";
 import cards from "./data/cards";
 import "./App.css";
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const isFirst = currentIndex === 0;
+  const isLast = currentIndex === cards.length - 1;
+
+  const handlePrev = () => {
+    if (!isFirst) setCurrentIndex((i) => i - 1);
+  };
+
   const handleNext = () => {
-    let nextIndex;
-    do {
-      nextIndex = Math.floor(Math.random() * cards.length);
-    } while (nextIndex === currentIndex && cards.length > 1);
-    setCurrentIndex(nextIndex);
+    if (!isLast) setCurrentIndex((i) => i + 1);
   };
 
   const current = cards[currentIndex];
@@ -38,9 +42,30 @@ function App() {
           image={current.image}
         />
         <p className="card-hint">Click the card to flip it</p>
-        <button className="app__next-btn" onClick={handleNext}>
-          Next Card →
-        </button>
+
+        {/* Nested component: handles the guess input + feedback.
+            key resets its internal state whenever the card changes. */}
+        <GuessForm key={currentIndex} answer={current.answer} />
+
+        <div className="app__nav">
+          <button
+            className="app__nav-btn"
+            onClick={handlePrev}
+            disabled={isFirst}
+          >
+            ← Back
+          </button>
+          <span className="app__progress">
+            {currentIndex + 1} / {cards.length}
+          </span>
+          <button
+            className="app__nav-btn"
+            onClick={handleNext}
+            disabled={isLast}
+          >
+            Next →
+          </button>
+        </div>
       </main>
 
       <footer className="app__footer">May the Force be with you 🌌</footer>
